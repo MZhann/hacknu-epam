@@ -17,6 +17,8 @@ import Talker from "@/components/Talker";
 import aldar from "../../public/images/aldar.png";
 import scrip from "../../public/images/scrip.png"
 import ggg from "../../public/images/ggg.png"
+import Navigation from "@/components/Navigation";
+
 
 
 const Chats = () => {
@@ -24,7 +26,8 @@ const Chats = () => {
 
     return (
         <div className="h-[113px] w-[full] relative">
-            <Image src={blueblock} className="w-full h-[113px]" alt="blueblock" />
+            {/* <Image src={blueblock} className="w-full h-[113px]" alt="blueblock" /> */}
+            <div className="w-full h-[113px] bg-[#815854]"></div>
             <div className="text-white text-2xl absolute top-1/2 ml-10  text-bold">
                 Кіммен сөйлескіңіз келеді?
             </div>
@@ -60,6 +63,10 @@ const Chats = () => {
                     </Link>
                 </li>
             </ul>
+
+            <Navigation />
+
+
         </div>
     );
 };

@@ -10,7 +10,9 @@ import { config } from "../../config";
 import show from "../../public/images/show.png";
 import hide from "../../public/images/hide.png";
 import loading from "../../public/loading.gif";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import oyu from "../../public/images/oyu.png";
+import back from "../../public/images/back.png";
 
 const SignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +46,7 @@ const SignUp = () => {
     };
 
     const handleSubmit = async (e) => {
+        console.log('clicked');
         e.preventDefault();
 
         const isValidPassword = (password) =>
@@ -60,9 +63,10 @@ const SignUp = () => {
         if (validate()) {
             const requestBody = {
                 first_name: name,
-                last_name: phone,
+                last_name: null,
                 email: email,
                 password: password,
+                photo: null
             };
 
             try {
@@ -120,128 +124,182 @@ const SignUp = () => {
         }
     }
     return (
-        <div className="w-full flex flex-col items-center bg-[#2A293B] min-h-screen ">
-            <Image
-                src={cook}
-                alt="cook"
-                className="w-[350px] mt-6 mb-8 absolute left-20 top-72"
+        <div className="w-full flex flex-col items-center bg-[#F9EBDE] min-h-screen ">
+            <Image src={oyu} alt="oyu" className="absolute z-40" />
+            <div className="absolute text-white font-bold text-2xl z-50 mt-14">
+                Sign Up
+            </div>
+            <div className="w-full h-[110px] bg-[#815854] z-40 ">
+                <Link href="/first" className="z-40">
+                    <Image
+                        src={back}
+                        alt="back"
+                        className="mt-10 ml-8 w-[20px] z-10"
+                    />
+                </Link>
+            </div>
+            <input
+                id="email"
+                className={`w-[327px] h-[50px] rounded-xl border-2 shadow-gray-500 text-xs p-3 mt-24 ${
+                    !validateEmail(email) && "border-red-500"
+                }`}
+                placeholder="your.email@gmail.com"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
             />
-            <Image
-                src={cooker}
-                alt="cook"
-                className="w-[120px] mt-6 mb-8 absolute right-52 top-72"
-            />
-            <Image src={logo} alt="logo" className="w-[300px] mt-6 mb-8" />
-            <div className="w-[450px] text-black py-8 bg-white rounded-xl flex justify-center">
-                <div className="w-8/12 flex flex-col">
-                    <h1 className="text-lg text-black font-bold">Sign up</h1>
-                    <p className="text-xs mt-1">
-                        Already have an account?
-                        <Link
-                            href="/sign-in"
-                            className="text-[#80CC2D] hover:border-b-[#AAE06E] border-white border-b-2"
-                        >
-                            &nbsp;Log in&nbsp;
-                        </Link>
-                    </p>
-                    {errorMessage && (
-                        <p className="text-red-500 text-xs mt-2">
-                            {errorMessage}
-                        </p>
-                    )}
-                    <p className="text-sm mt-5">First name</p>
-                    <input
-                        id="name"
-                        className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
-                        placeholder="name"
-                        type="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+            <div className="flex flex-col items-center relative mt-4">
+                <input
+                    id="name"
+                    
+                    className={`w-full rounded-xl border-2 h-[50px] shadow-gray-500 text-xs p-3 mt-2 ${
+                        password.length < 6 && "border-red-500"
+                    }`}
+                    placeholder="name"
+                    type="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                    id="password"
+                    className={`w-[327px] h-[50px] rounded-xl border-2 relative shadow-gray-500 text-xs p-3 mt-2 ${
+                        password.length < 6 && "border-red-500"
+                    }`}
+                    placeholder="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type={passwordShown ? "text" : "password"}
+                />
+                {passwordShown ? (
+                    <Image
+                        onClick={() => setPasswordShown(false)}
+                        src={hide}
+                        alt="eye_closed"
+                        className="w-[20px] h-[20px] absolute top-[80px] right-3"
                     />
-                    <p className="text-sm mt-5">Last name</p>
-                    <input
-                        id="last_name"
-                        className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
-                        placeholder="surname"
-                        type="text"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                ) : (
+                    <Image
+                        onClick={() => setPasswordShown(true)}
+                        src={show}
+                        alt="eye"
+                        className="w-[20px] h-[20px] absolute top-[80px] right-3"
                     />
-                    <p className="text-sm mt-5">Email</p>
-                    <input
-                        id="email"
-                        className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
-                        placeholder="your.email@gmail.com"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <p className="text-sm mt-5">Create a password</p>
-                    <div className="relative">
-                        <input
-                            id="password"
-                            className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2 ${
-                                password.length < 6 && "border-red-500"
-                            }`}
-                            placeholder="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            type={passwordShown ? "text" : "password"}
-                        />
-                        {passwordShown ? (
-                            <Image
-                                onClick={() => setPasswordShown(false)}
-                                src={hide}
-                                alt="eye_closed"
-                                className="w-[20px] h-[20px] absolute top-[18px] right-3"
-                            />
-                        ) : (
-                            <Image
-                                onClick={() => setPasswordShown(true)}
-                                src={show}
-                                alt="eye"
-                                className="w-[20px] h-[20px] absolute top-[18px] right-3"
-                            />
-                        )}
-                        {!isPasswordValidated ? (
-                            <div className="text-red-600 text-xs mt-2">
-                                Password should be more than 8 and less than 40
-                                symbols, start with capital letter and contain
-                                at least one number
-                            </div>
-                        ) : (
-                            <></>
-                        )}
-                    </div>
+                )}
+                <button
+                    className={`text-white bg-[#815854] w-full h-[52px] rounded-3xl mt-24 ${
+                        errorMessage && "disabled"
+                    }`}
+                    onClick={handleSubmit}
+                >
+                    Sign Up
+                </button>
+            </div>
 
-                    <div className="flex justify-between items-center">
-                        {isLoading ? (
-                            <Image
-                                src={loading}
-                                alt="loading"
-                                className="w-[20px] h-[20px]"
-                            />
-                        ) : (
-                            <></>
-                        )}
-                        <p className="text-[#80CC2D] text-xs mt-2 self-end border-b-2 border-white cursor-pointer hover:border-b-[#AAE06E]">
-                            <Link href={"/forgot-password"}>
-                                Forgot password?
-                            </Link>
-                        </p>
-                    </div>
-
-                    <button
-                        className={`text-white bg-[#AAE06E] w-full h-10 rounded-3xl mt-5 ${
-                            errorMessage && "disabled" // Disable button if there's an error
-                        }`}
-                        onClick={handleSubmit}
-                    >
-                        Sign Up
-                    </button>
-                </div>
+            <div className="absolute bottom-5 text-gray-700">
+                Don&apos;t have an account?{" "}
+                <Link href="/sign-up" className="underline text-blue-400">
+                    Sign un
+                </Link>
             </div>
         </div>
+        // <div className="w-full flex flex-col items-center bg-[#2A293B] min-h-screen ">
+
+        //     <div className="w-[450px] text-black py-8 bg-white rounded-xl flex justify-center">
+        //         <div className="w-8/12 flex flex-col">
+        //             <h1 className="text-lg text-black font-bold">Sign up</h1>
+
+        //             <input
+        //                 id="name"
+        //                 className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
+        //                 placeholder="name"
+        //                 type="name"
+        //                 value={name}
+        //                 onChange={(e) => setName(e.target.value)}
+        //             />
+        //             <p className="text-sm mt-5">Last name</p>
+        //             <input
+        //                 id="last_name"
+        //                 className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
+        //                 placeholder="surname"
+        //                 type="text"
+        //                 value={phone}
+        //                 onChange={(e) => setPhone(e.target.value)}
+        //             />
+        //             <p className="text-sm mt-5">Email</p>
+        //             <input
+        //                 id="email"
+        //                 className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
+        //                 placeholder="your.email@gmail.com"
+        //                 type="email"
+        //                 value={email}
+        //                 onChange={(e) => setEmail(e.target.value)}
+        //             />
+        //             <p className="text-sm mt-5">Create a password</p>
+        //             <div className="relative">
+        //                 <input
+        //                     id="password"
+        //                     className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2 ${
+        //                         password.length < 6 && "border-red-500"
+        //                     }`}
+        //                     placeholder="password"
+        //                     value={password}
+        //                     onChange={(e) => setPassword(e.target.value)}
+        //                     type={passwordShown ? "text" : "password"}
+        //                 />
+        //                 {passwordShown ? (
+        //                     <Image
+        //                         onClick={() => setPasswordShown(false)}
+        //                         src={hide}
+        //                         alt="eye_closed"
+        //                         className="w-[20px] h-[20px] absolute top-[18px] right-3"
+        //                     />
+        //                 ) : (
+        //                     <Image
+        //                         onClick={() => setPasswordShown(true)}
+        //                         src={show}
+        //                         alt="eye"
+        //                         className="w-[20px] h-[20px] absolute top-[18px] right-3"
+        //                     />
+        //                 )}
+        //                 {!isPasswordValidated ? (
+        //                     <div className="text-red-600 text-xs mt-2">
+        //                         Password should be more than 8 and less than 40
+        //                         symbols, start with capital letter and contain
+        //                         at least one number
+        //                     </div>
+        //                 ) : (
+        //                     <></>
+        //                 )}
+        //             </div>
+
+        //             <div className="flex justify-between items-center">
+        //                 {isLoading ? (
+        //                     <Image
+        //                         src={loading}
+        //                         alt="loading"
+        //                         className="w-[20px] h-[20px]"
+        //                     />
+        //                 ) : (
+        //                     <></>
+        //                 )}
+        //                 <p className="text-[#80CC2D] text-xs mt-2 self-end border-b-2 border-white cursor-pointer hover:border-b-[#AAE06E]">
+        //                     <Link href={"/forgot-password"}>
+        //                         Forgot password?
+        //                     </Link>
+        //                 </p>
+        //             </div>
+
+        //             <button
+        //                 className={`text-white bg-[#AAE06E] w-full h-10 rounded-3xl mt-5 ${
+        //                     errorMessage && "disabled" // Disable button if there's an error
+        //                 }`}
+        //                 onClick={handleSubmit}
+        //             >
+        //                 Sign Up
+        //             </button>
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 

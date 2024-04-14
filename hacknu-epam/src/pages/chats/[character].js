@@ -26,6 +26,7 @@ const characterRoles = {
 };
 
 // Define API key (replace with your actual API key)
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
 // Functional component for the chat application
 function App() {
@@ -86,7 +87,7 @@ function App() {
             const response = await fetch("https://api.openai.com/v1/chat/completions", {
                 method: "POST",
                 headers: {
-                    Authorization: "Bearer " + API_KEY,
+                    Authorization: "Bearer " + apiKey,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(apiRequestBody),
