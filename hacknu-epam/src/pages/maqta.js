@@ -36,7 +36,7 @@ const Makta = () => {
                     <Image src={book1} alt="book" />
                     <div className="text-white font-bold text-sm">Reading</div>
                     <div className="text-white text-xs">
-                        New books here.<br></br> Let's read it!
+                        New books here.<br></br> Let&apos;s read it!
                     </div>
                 </div>
 
