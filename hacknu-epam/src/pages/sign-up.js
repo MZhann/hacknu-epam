@@ -196,110 +196,14 @@ const SignUp = () => {
             </div>
 
             <div className="absolute bottom-5 text-gray-700">
-                Don&apos;t have an account?{" "}
-                <Link href="/sign-up" className="underline text-blue-400">
-                    Sign un
+                Alredy have  an account?{" "}
+                <Link href="/sign-in" className="underline text-blue-400">
+                    Sign in
                 </Link>
             </div>
         </div>
-        // <div className="w-full flex flex-col items-center bg-[#2A293B] min-h-screen ">
-
-        //     <div className="w-[450px] text-black py-8 bg-white rounded-xl flex justify-center">
-        //         <div className="w-8/12 flex flex-col">
-        //             <h1 className="text-lg text-black font-bold">Sign up</h1>
-
-        //             <input
-        //                 id="name"
-        //                 className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
-        //                 placeholder="name"
-        //                 type="name"
-        //                 value={name}
-        //                 onChange={(e) => setName(e.target.value)}
-        //             />
-        //             <p className="text-sm mt-5">Last name</p>
-        //             <input
-        //                 id="last_name"
-        //                 className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
-        //                 placeholder="surname"
-        //                 type="text"
-        //                 value={phone}
-        //                 onChange={(e) => setPhone(e.target.value)}
-        //             />
-        //             <p className="text-sm mt-5">Email</p>
-        //             <input
-        //                 id="email"
-        //                 className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2`}
-        //                 placeholder="your.email@gmail.com"
-        //                 type="email"
-        //                 value={email}
-        //                 onChange={(e) => setEmail(e.target.value)}
-        //             />
-        //             <p className="text-sm mt-5">Create a password</p>
-        //             <div className="relative">
-        //                 <input
-        //                     id="password"
-        //                     className={`w-full rounded-3xl border-2 h-10 shadow-gray-500 text-xs p-3 mt-2 ${
-        //                         password.length < 6 && "border-red-500"
-        //                     }`}
-        //                     placeholder="password"
-        //                     value={password}
-        //                     onChange={(e) => setPassword(e.target.value)}
-        //                     type={passwordShown ? "text" : "password"}
-        //                 />
-        //                 {passwordShown ? (
-        //                     <Image
-        //                         onClick={() => setPasswordShown(false)}
-        //                         src={hide}
-        //                         alt="eye_closed"
-        //                         className="w-[20px] h-[20px] absolute top-[18px] right-3"
-        //                     />
-        //                 ) : (
-        //                     <Image
-        //                         onClick={() => setPasswordShown(true)}
-        //                         src={show}
-        //                         alt="eye"
-        //                         className="w-[20px] h-[20px] absolute top-[18px] right-3"
-        //                     />
-        //                 )}
-        //                 {!isPasswordValidated ? (
-        //                     <div className="text-red-600 text-xs mt-2">
-        //                         Password should be more than 8 and less than 40
-        //                         symbols, start with capital letter and contain
-        //                         at least one number
-        //                     </div>
-        //                 ) : (
-        //                     <></>
-        //                 )}
-        //             </div>
-
-        //             <div className="flex justify-between items-center">
-        //                 {isLoading ? (
-        //                     <Image
-        //                         src={loading}
-        //                         alt="loading"
-        //                         className="w-[20px] h-[20px]"
-        //                     />
-        //                 ) : (
-        //                     <></>
-        //                 )}
-        //                 <p className="text-[#80CC2D] text-xs mt-2 self-end border-b-2 border-white cursor-pointer hover:border-b-[#AAE06E]">
-        //                     <Link href={"/forgot-password"}>
-        //                         Forgot password?
-        //                     </Link>
-        //                 </p>
-        //             </div>
-
-        //             <button
-        //                 className={`text-white bg-[#AAE06E] w-full h-10 rounded-3xl mt-5 ${
-        //                     errorMessage && "disabled" // Disable button if there's an error
-        //                 }`}
-        //                 onClick={handleSubmit}
-        //             >
-        //                 Sign Up
-        //             </button>
-        //         </div>
-        //     </div>
-        // </div>
+        
+        
     );
 };
 
