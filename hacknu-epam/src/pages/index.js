@@ -1,45 +1,25 @@
-import MainContainer from "@/components/MainContainer";
-import React, { useState } from "react";
 import "../app/globals.css";
-import bg from "../../public/images/greenBg.svg"
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import WelcomeTry from "@/components/WelcomeTry";
-import RecentlyAdded from "@/components/RecentlyAdded";
-import FollowAlong from "@/components/FollowAlong";
-import Footer from "@/components/Footer";
-import CreatingReceipt from "@/components/modal/CreatingReceipt";
-import MemoryGame from "@/components/MemoryGame";
-import DoYouWannaPlay from "@/components/modal/DoYouWannaPlay";
+import Link from "next/link";
+import background from '../../public/images/background.png';
+import hello from "../../public/images/Hello.png";
+import kitty from '../../public/images/kitty.png'
+import button from '../../public/images/button.png'
 
-const Main = () => {
-
-
-    const [isQuizOpen, setIsQuizOpen] = useState(false);
-    const closeQuiz = () => {
-        setIsQuizOpen(false);
-    }
+const First = () => {
+    
 
     return (
-        <MainContainer>
-            <Image src={bg} className="absolute w-2/3 right-0 top-0 z-0" alt="background"/>
-            <div className=" w-full max-w-[1195px] relative flex flex-col ">
-                <Navbar/>
-                <WelcomeTry/>
-                <RecentlyAdded/>
-                {typeof localStorage !== 'undefined' && localStorage.getItem('accessToken') &&
-                    <DoYouWannaPlay isQuizOpen={isQuizOpen} setIsQuizOpen={setIsQuizOpen} closeQuiz={closeQuiz} />
-                }
-                <div className="w-full flex justify-center">
-                    <CreatingReceipt/>
-                </div>
-                <FollowAlong/>
-                <Footer/>
-            </div>
-
-
-        </MainContainer>
-    )
-}
-
-export default Main;
+        <div className="w-full relative flex flex-col items-center min-h-screen">
+            <Image src={background} className="absolute w-full h-full" alt="bg"/>
+            <Image src={hello} className="z-10 mt-[50%]" alt="hello"/>
+            <Image src={kitty} className="z-10 mt-10" alt="kitty"/>
+            <Link href={"/auth"} className="relative w-[320px] h-[52px] flex justify-center items-center z-30">
+                <div className="text-white font-bold text-2xl mt-[40%] z-20">Let&apos;s go</div>
+                <Image src={button} className="absolute z-10 mt-[40%]" alt="button" />
+            </Link>
+        </div>
+       
+    );
+};
+export default First;

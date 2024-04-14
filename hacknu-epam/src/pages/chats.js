@@ -1,18 +1,7 @@
-import MainContainer from "@/components/MainContainer";
 import React, { useState } from "react";
 import "../app/globals.css";
-import bg from "../../public/images/greenBg.svg";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import WelcomeTry from "@/components/WelcomeTry";
-import RecentlyAdded from "@/components/RecentlyAdded";
-import FollowAlong from "@/components/FollowAlong";
-import Footer from "@/components/Footer";
-import CreatingReceipt from "@/components/modal/CreatingReceipt";
-import MemoryGame from "@/components/MemoryGame";
-import DoYouWannaPlay from "@/components/modal/DoYouWannaPlay";
-import blueblock from "../../public/images/blueblock.png";
 import Talker from "@/components/Talker";
 import aldar from "../../public/images/aldar.png";
 import scrip from "../../public/images/scrip.png"

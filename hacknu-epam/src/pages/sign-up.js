@@ -110,7 +110,7 @@ const SignUp = () => {
             setIsLoading(false);
 
             // Redirect to home page
-            router.push("/");
+            router.push("/maqta");
         } catch (error) {
             setIsLoading(false);
             console.error(error);
