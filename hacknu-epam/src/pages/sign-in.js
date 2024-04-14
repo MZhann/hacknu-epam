@@ -36,7 +36,7 @@ const SignIn = () => {
                 .then((res) => {
                     localStorage.setItem("accessToken", res.data.access);
                     localStorage.setItem("refreshToken", res.data.refresh);
-                    window.location.href = "/maqta";
+                    window.location.href = "/test";
                 })
                 .catch((error) => {
                     console.error(error);
